@@ -4,16 +4,19 @@ const movieCtrl = {};
 
 //Funcion devuelve todas las peliculas
 movieCtrl.getMovies = async  (req, res) => {
-    const movies = await Movie.find().then((data) => {res.status(200).json({
+    const movies = await Movie.find()
+        .then((data) => {res.status(200).json({
         status: true,
         data: data
-    }).catch((err) => {res.status(400).json({
+    })
+
+    })
+    .catch((err) => {res.status(400).json({
         status: false,
         message: err.message
     })
         console.error(err)
     })
-    });
 }
 
 movieCtrl.getMovie = async (req,res) => {
